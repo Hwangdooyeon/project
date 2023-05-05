@@ -13,30 +13,30 @@ import java.util.List;
 
 @Controller
 public class MemberController {
-  private final MemberService memberservice;
-   @Autowired
-  public MemberController(MemberService memberservice) {
-    this.memberservice = memberservice;
-  }
+    private final MemberService memberservice;
+    @Autowired
+    public MemberController(MemberService memberservice) {
+        this.memberservice = memberservice;
+    }
 
-  @GetMapping("/member/new")
+    @GetMapping("/member/new")
     private String createForm() {
-      return "member/createMemberForm";
+        return "member/createMemberForm";
 
-}
-@PostMapping("/member/new")
-public String create(MemberDto form){
-     Member member = new Member();
-     member.setName(form.getName());
-     member.setEmail(form.getEmail());
-     memberservice.join(member);
+    }
+    @PostMapping("/member/new")
+    public String create(MemberDto form){
+        Member member = new Member();
+        member.setName(form.getName());
+        member.setEmail(form.getEmail());
+        memberservice.join(member);
 
-     return "redirect";
-   }
-   @GetMapping("/member/list")
-  public String list(Model model){
-     List<Member> members = memberservice.findMembers();
-     model.addAttribute("members",members);
-     return "member/memberList";
-   }
+        return "redirect";
+    }
+    @GetMapping("/member/list")
+    public String list(Model model){
+        List<Member> members = memberservice.findMembers();
+        model.addAttribute("members",members);
+        return "member/memberList";
+    }
 }
