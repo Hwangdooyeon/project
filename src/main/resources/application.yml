@@ -1,2 +1,10 @@
 server:
   port: 8081
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:23307/study_db
+    username: HWANGDOOYEON
+    password: 1525
+  jpa:
+    generate-ddl: true
